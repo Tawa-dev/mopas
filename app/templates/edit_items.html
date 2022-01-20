@@ -1,0 +1,155 @@
+{% extends 'layout.html' %} {% block title %}Edit Items{% endblock %} {% block
+content %}
+<div>
+  <h2>Search For Items</h2>
+
+  <form action="{{ url_for('find_item') }}" method="post" class="mx-3 mt-3">
+    <div class="form-group">
+      <label for="office">Choose Office</label>
+      <select
+        class="form-control"
+        name="office"
+        id="office"
+        class="position_option"
+        required
+      >
+        <option value="">--Select Office--</option>
+        <option value="Accounts">Accounts</option>
+        <option value="Admin">Admin</option>
+        <option value="DSI">DSI</option>
+        <option value="Hall">Hall</option>
+        <option value="Human Resources">Human Resources</option>
+        <option value="ICT">ICT</option>
+        <option value="Kitchen">Kitchen</option>
+        <option value="LEPS">LEPS</option>
+        <option value="Non-Formal">Non-Formal</option>
+        <option value="Office 1">Office 1</option>
+        <option value="Office 2">Office 2</option>
+        <option value="Office 3">Office 3</option>
+        <option value="Office 4">Office 4</option>
+        <option value="Office 5">Office 5</option>
+        <option value="Reception">Reception</option>
+        <option value="Records">Records</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="Name">Item Name</label>
+      <input
+        class="form-control"
+        type="text"
+        name="Name"
+        id="Name"
+        class="destination"
+        required
+      />
+    </div>
+    <input class="form-submit dash-btn" type="submit" value="Find" />
+    <p>{{ msg }}</p>
+  </form>
+</div>
+{% if item %}
+<div class="container">
+  <h2>Edit Items</h2>
+
+  <form action="{{ url_for('edit_items') }}" method="post">
+    <input type="text" name="_id" id="_id" hidden value="{{item._id}}" />
+    <div class="form-group">
+      <label for="office">Office</label>
+      <select
+        class="form-control"
+        name="office"
+        id="office"
+        class="position_option"
+        required
+      >
+        <option value="{{item.Office}}">{{item.Office}}</option>
+        <option value="Accounts">Accounts</option>
+        <option value="Admin">Admin</option>
+        <option value="DSI">DSI</option>
+        <option value="Hall">Hall</option>
+        <option value="Human Resources">Human Resources</option>
+        <option value="ICT">ICT</option>
+        <option value="Kitchen">Kitchen</option>
+        <option value="LEPS">LEPS</option>
+        <option value="Non-Formal">Non-Formal</option>
+        <option value="Office 1">Office 1</option>
+        <option value="Office 2">Office 2</option>
+        <option value="Office 3">Office 3</option>
+        <option value="Office 4">Office 4</option>
+        <option value="Office 5">Office 5</option>
+        <option value="Reception">Reception</option>
+        <option value="Records">Records</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="Name">Name</label>
+      <input
+        class="form-control"
+        type="text"
+        name="Name"
+        id="Name"
+        value="{{item.Name}}"
+        class="destination"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="quantity">Quantity</label>
+      <input
+        class="form-control"
+        type="number"
+        name="quantity"
+        id="quantity"
+        class="budget"
+        value="{{item.Quantity}}"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="aDate">Date</label>
+      <input
+        class="form-control"
+        type="text"
+        name="aDate"
+        id="aDate"
+        value="{{item.Date.strftime('%Y-%m-%d')}}"
+        class="budget"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="supplier">Supplier</label>
+      <input
+        class="form-control"
+        type="text"
+        name="supplier"
+        id="supplier"
+        value="{{item.Supplier}}"
+        class="destination"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="invoice">Invoice Number</label>
+      <input
+        class="form-control"
+        type="text"
+        name="invoice"
+        id="invoice"
+        value="{{item.Invoice_Num}}"
+        class="destination"
+        required
+      />
+    </div>
+
+    <input class="form-submit dash-btn" type="submit" value="Save Changes" />
+
+    <p class="msg done">{{ msg }}</p>
+  </form>
+  <form action="{{ url_for('remove_items') }}" method="post">
+    <input type="text" name="_id" id="_id" hidden value="{{item._id}}" />
+    <input class="form-submit dash-btn remove" type="submit" value="Remove" />
+  </form>
+</div>
+
+{% endif %} {% endblock %}

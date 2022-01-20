@@ -1,0 +1,96 @@
+{% extends 'layout.html' %} {% block title %}Add Items{% endblock %} {% block
+content %}
+<div class="h-container">
+  <h2>Add Office Items</h2>
+
+  <form action="{{ url_for('add_items') }}" method="post" class="mx-3 mt-3">
+    <div class="form-group">
+      <label for="office">Choose Office</label>
+      <select
+        class="form-control"
+        name="office"
+        id="office"
+        class="position_option"
+        required
+      >
+        <option value="">--Select Office--</option>
+        <option value="Accounts">Accounts</option>
+        <option value="Admin">Admin</option>
+        <option value="DSI">DSI</option>
+        <option value="Hall">Hall</option>
+        <option value="Human Resources">Human Resources</option>
+        <option value="ICT">ICT</option>
+        <option value="Kitchen">Kitchen</option>
+        <option value="LEPS">LEPS</option>
+        <option value="Non-Formal">Non-Formal</option>
+        <option value="Office 1">Office 1</option>
+        <option value="Office 2">Office 2</option>
+        <option value="Office 3">Office 3</option>
+        <option value="Office 4">Office 4</option>
+        <option value="Office 5">Office 5</option>
+        <option value="Reception">Reception</option>
+        <option value="Records">Records</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="Name">Name</label>
+      <input
+        class="form-control"
+        type="text"
+        name="Name"
+        id="Name"
+        class="destination"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="quantity">Quantity</label>
+      <input
+        class="form-control"
+        type="number"
+        name="quantity"
+        id="quantity"
+        class="budget"
+        placeholder="10"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="aDate">Date</label>
+      <input
+        class="form-control"
+        type="date"
+        name="aDate"
+        id="aDate"
+        class="budget"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="supplier">Supplier</label>
+      <input
+        class="form-control"
+        type="text"
+        name="supplier"
+        id="supplier"
+        class="destination"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="invoice">Invoice Number</label>
+      <input
+        class="form-control"
+        type="text"
+        name="invoice"
+        id="invoice"
+        class="destination"
+        required
+      />
+    </div>
+
+    <input class="form-submit dash-btn" type="submit" value="Add Item/s" />
+    <p class="msg done">{{ msg }}</p>
+  </form>
+</div>
+{% endblock %}

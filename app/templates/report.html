@@ -1,0 +1,64 @@
+{% extends 'layout.html' %} {% block title %}Report{% endblock %} {% block
+content %}
+<div>
+  <h2>Asset Reports</h2>
+
+  <form action="{{ url_for('reports') }}" method="post" class="mx-3 mt-3">
+    <div class="form-group">
+      <label for="office">Choose Office</label>
+      <select
+        class="form-control"
+        name="office"
+        id="office"
+        class="position_option"
+        required
+      >
+        <option value="">--Select Office--</option>
+        <option value="all">All Offices</option>
+        <option value="Accounts">Accounts</option>
+        <option value="Admin">Admin</option>
+        <option value="DSI">DSI</option>
+        <option value="Hall">Hall</option>
+        <option value="Human Resources">Human Resources</option>
+        <option value="ICT">ICT</option>
+        <option value="Kitchen">Kitchen</option>
+        <option value="LEPS">LEPS</option>
+        <option value="Non-Formal">Non-Formal</option>
+        <option value="Office 1">Office 1</option>
+        <option value="Office 2">Office 2</option>
+        <option value="Office 3">Office 3</option>
+        <option value="Office 4">Office 4</option>
+        <option value="Office 5">Office 5</option>
+        <option value="Reception">Reception</option>
+        <option value="Records">Records</option>
+      </select>
+    </div>
+    <input class="form-submit dash-btn" type="submit" value="Generate Report" />
+    <p>{{ msg }}</p>
+  </form>
+</div>
+{% if report %}
+<div class="container">
+  <h2>Office Item's Report</h2>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Office</th>
+        <th>Name</th>
+        <th>Quantity</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in report %}
+      <tr>
+        <td>{{item.Office}}</td>
+        <td>{{item.Name}}</td>
+        <td>{{item.Quantity}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endif %} {% endblock %}
